@@ -8,7 +8,7 @@ router.post('/login', (req, res) => {
 
   if (isValidUser(email, password)) {
     const token = jwt.sign({ email, role: getUserRole(email) }, 'secretKey', { expiresIn: '1h' });
-    res.json({ token });
+    res.json({ message: 'Welcome!', token });
   } else {
     res.status(401).json({ error: 'Invalid login' });
   }
